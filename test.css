@@ -1,0 +1,14 @@
+#leza {
+    background-color: green;
+}
+#tabspecial{
+    padding: 20px;
+    margin: 15px;
+    border: 1px black solid;
+    border-collapse:  1px black solid;
+
+}
+tr {
+    border: 1px grey solid;
+
+}
