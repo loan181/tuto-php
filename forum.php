@@ -49,22 +49,24 @@ if ($room == "banane") {
 
 <?php
 // Database connection
-$db = new mysqli("localhost", "root", "root", "forum");
+$db = new mysqli("localhost", "root", "", "forum");
 if ($db -> connect_errno) {
     echo "Failed to connect to MySQL: " . $db -> connect_error;
     exit();
 }
 
 // Insertion dans la table
-$test = htmlspecialchars($_POST["lezaaaa"]);
-$test2 = htmlspecialchars($_POST["walaaa"]);
-$test3 = htmlspecialchars($_POST["email"]);
-if ($test) {
-    //    $sql = "INSERT INTO message (name, content) VALUES ('" . $test . "','" . $test2 . "','" )";
-    $sql = "INSERT INTO message (name, content, email) VALUES (?, ?, ?)";
-    $stmt = $db->prepare($sql);
-    $stmt->bind_param("sss", $test, $test2, $test3);
-    $stmt->execute();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $test = htmlspecialchars($_POST["lezaaaa"]);
+    $test2 = htmlspecialchars($_POST["walaaa"]);
+    $test3 = htmlspecialchars($_POST["email"]);
+    if ($test) {
+        //    $sql = "INSERT INTO message (name, content) VALUES ('" . $test . "','" . $test2 . "','" )";
+        $sql = "INSERT INTO message (name, content, email) VALUES (?, ?, ?)";
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("sss", $test, $test2, $test3);
+        $stmt->execute();
+    }
 }
 
 
